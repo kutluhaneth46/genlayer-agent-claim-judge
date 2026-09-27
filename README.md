@@ -1,21 +1,23 @@
-﻿# Agent Claim Judge · GenLayer Intelligent Contract
+# Agent Claim Judge Â· Evidence Court (v2)
 
 Builder: **KutluhanETH**
 
-LLM claim adjudicator. Consensus on accept/reject via Equivalence Principle.
+Multi-step GenLayer Intelligent Contract:
+filing â†’ evidence (1-3 URLs) â†’ optional challenge â†’ deliberate
+(programmatic gate + LLM consensus).
 
-## Live Studio
+## Mechanism
 
-- Contract: https://explorer-studio.genlayer.com/address/0x8a2C9881F8700aF25EE6150621abe21fd3cDfcC1
-- Deploy tx: https://explorer-studio.genlayer.com/tx/0x2651957b839f99a47b3de76ccabfca9df946ec5579e562aa0967bb9bb632fff0
-- Result: get_verdict → "accept" after judge_claim
+1. Deploy with concrete claim + builder_label
+2. submit_evidence(https://...) up to 3 times
+3. optional file_challenge(reason)
+4. deliberate(): deterministic checks, then LLM accept/reject/insufficient
+5. settled locks accept/reject; insufficient allows more evidence
 
-## Why not Hello World
+## Lint
 
-- gl.nondet.exec_prompt + JSON allowlisted verdicts
-- gl.eq_principle.strict_eq on normalized verdict
-- Persistent state + one-shot settled latch
+UTF-8 **without BOM**. Depends comment is byte 0 of the file.
 
-## File
+## Studio demo
 
-- agent_claim_judge.py
+Use contract + evidence links from your new deploy after v2 ship.
